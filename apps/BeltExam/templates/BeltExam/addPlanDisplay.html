@@ -1,0 +1,35 @@
+<html>
+<head>
+	<title>Add Trip Display</title>
+</head>
+<style>
+	.errors {
+		color: red;
+	}
+</style>
+<body>
+	<h1> Add A Trip </h1>
+	<form action="{%url 'BeltExam:addPlan' %}" method='post'>
+    {% csrf_token %}
+    	{% if emptyEntries %}
+    		<p class = "errors"> {{ emptyEntries}}</p>
+    	{% endif %}
+          Destination: <input type='text' name='destination'> <br>
+          Description: <input type='text' name='description'> <br>
+        {% if dateError %}
+    		<p class = "errors">{{ dateError}}</p>
+    	{% endif %}
+    	{% if futureDate %}
+    		<p class = "errors">{{ futureDate }}</p>
+    	{% endif %}
+    	{% if dateFailure %}
+    		<p class = "errors">{{ dateFailure}}</p>
+    	{% endif %}
+          Travel Date From: <input type='date' name='fromDate'> <br>
+          Travel Date To: <input type='date' name='toDate'> 
+          <input type='submit' value='Add Trip'>
+    </form>
+    <a href="{%url 'BeltExam:index' %}">Go Back to Home</a>
+    <a href="{%url 'BeltExam:logout' %}">Log Out</a>
+</body>
+</html>

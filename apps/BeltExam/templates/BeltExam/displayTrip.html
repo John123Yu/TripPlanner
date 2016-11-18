@@ -1,0 +1,26 @@
+<html>
+<head>
+	<title>Display Trip</title>
+</head>
+<body>
+	<div class = "container">
+ 		<div class = "row">
+ 			<div class = "col-sm-8 col-sm-offset-2">
+ 				<h1>{{ trip.destination }}</h1>
+ 				<ul>
+ 					<li>Planned By: {{trip.creater.name}} </li>
+ 					<li>Description: {{trip.description}} </li>
+ 					<li>Travel Date From: {{trip.fromDate}} </li>
+ 					<li>Travel Date To: {{trip.toDate}} </li>
+ 				</ul>
+			</div>
+		</div>
+	</div>
+	<h1>Other Users Joining Trip</h1>
+	{% for user in other_users %}
+		<p>{{user.User.name}}</p>
+	{% endfor %}
+	<a href="{%url 'BeltExam:index' %}">Go Back to Display</a>
+	<a href="{%url 'BeltExam:logout'%}">LogOut</a>
+</body>
+</html>
